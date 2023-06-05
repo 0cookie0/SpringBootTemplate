@@ -43,6 +43,12 @@
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<version>1.4.3</version>
 		</dependency>
+		<!--        TODO 添加必要的依赖坐标-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.1.16</version>
+		</dependency>
 		<!--devtools热部署-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
