@@ -1,13 +1,12 @@
 package com.javaee.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.javaee.po.User;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
 
 @Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
-    List<User> getAll();
 
 }
