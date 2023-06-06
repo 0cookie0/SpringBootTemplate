@@ -1,25 +1,12 @@
 package com.javaee.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.javaee.mapper.UserMapper;
 import com.javaee.po.User;
-import com.javaee.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.javaee.service.IUserService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+/*ServiceImpl<持久层接口,模型类>*/
 @Service
-public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserMapper userMapper;
-
-    @Override
-    public List<User> getAll() {
-        return userMapper.selectList(null);
-    }
-
-    @Override
-    public User getById(Integer id) {
-        return userMapper.selectById(id);
-    }
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 }

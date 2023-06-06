@@ -12,4 +12,9 @@ public interface UserService {
     List<User> getAll();
 
     User getById(Integer id);
+
+    Boolean save(User user);
+    Boolean update(User user);
+    Boolean delete(Integer id);
+
 }
