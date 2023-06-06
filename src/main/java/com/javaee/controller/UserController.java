@@ -19,7 +19,9 @@ public class UserController {
     public String getAll(){
         System.out.println("进入getAll()");
         List<User> all = userService.getAll();
+        User user = userService.getById(1);
         System.out.println(all);
+        System.out.println(user);
         return all.toString();
     }
 

@@ -11,4 +11,5 @@ public interface UserService {
     /*获取所有用户信息*/
     List<User> getAll();
 
+    User getById(Integer id);
 }

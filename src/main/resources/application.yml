@@ -1,4 +1,4 @@
-
+#数据源信息配置
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,5 +10,15 @@ pagehelper:
   helperDialect: mysql
   reasonable: true
 
+#端口号配置
 server:
   port: 80
+
+#mp设置id策略
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+
+
+
