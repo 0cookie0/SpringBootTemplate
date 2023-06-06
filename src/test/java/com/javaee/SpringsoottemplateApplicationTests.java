@@ -1,5 +1,7 @@
 package com.javaee;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.javaee.mapper.UserMapper;
 import com.javaee.po.User;
@@ -65,6 +67,27 @@ class SpringsoottemplateApplicationTests {
 		System.out.println(page1.getSize());
 		System.out.println(page1.getTotal());
 
+	}
+
+	@Test
+	void testGetBy(){
+		/*按条件查询需要传入条件*/
+		QueryWrapper<User> qw = new QueryWrapper<User>();
+		/*把条件查询做成API形式*/
+		qw.like("username","Cookie");
+		List<User> users = userMapper.selectList(qw);
+		System.out.println(users);
+	}
+	@Test
+	void testGetBy2(){
+		/*按条件查询需要传入条件*/
+		LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<>();
+		/*需要先判断模糊查询参数是否为null*/
+		String name = null;
+		/*添加上条件判断,如果name为空,则不连接模糊查询条件,即查询所有*/
+		lqw.like(name != null,User::getUsername,"Cookie");
+
+		userMapper.selectList(lqw);
 	}
 
 }
