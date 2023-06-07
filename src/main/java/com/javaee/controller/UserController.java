@@ -1,11 +1,9 @@
 package com.javaee.controller;
 
 import com.javaee.po.User;
-import com.javaee.service.UserService;
+import com.javaee.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,17 +11,36 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @GetMapping
-    public String getAll(){
-        System.out.println("进入getAll()");
-        List<User> all = userService.getAll();
-        User user = userService.getById(1);
-        System.out.println(all);
-        System.out.println(user);
-        return all.toString();
+    public List<User> getAll(){
+        return userService.list();
     }
+
+    @PostMapping
+    /*传过来是json格式*/
+    public Boolean save(@RequestBody User user){
+        return userService.save(user);
+    }
+
+    @DeleteMapping("{id}")
+    public Boolean delete(Integer id){
+        return userService.removeById(id);
+    }
+
+    @PutMapping
+    public Boolean update(@RequestBody User user){
+        return userService.updateById(user);
+    }
+
+    @GetMapping("{id}")
+    /*对应url为/user/1*/
+    public User getById(Integer id){
+        return userService.getById(id);
+    }
+
+
 
 
 }
